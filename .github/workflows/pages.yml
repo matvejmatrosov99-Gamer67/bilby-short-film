@@ -20,8 +20,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Extract website
+      - name: Restore website archive
         run: |
+          base64 --decode bilby-complete-site.zip.b64 > bilby-complete-site.zip
           mkdir -p _site
           unzip -o bilby-complete-site.zip -d _site
           test -f _site/index.html
